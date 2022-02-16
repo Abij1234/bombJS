@@ -1,11 +1,11 @@
-body{
+body {
   background-image: url("img/backpic.jpeg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }
 
-.maindiv{
+.maindiv {
   width: 700px;
   height: 800px;
   margin-left: 130px;
@@ -24,27 +24,28 @@ body{
   1px solid rgba( 255, 255, 255, 0.18 );
 }
 
-.NNC{
-  padding-top: 15px;
-  padding-left: 200px;
+.maindiv .img
+{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+.maindiv .img .imgs{
+  padding: 8px;
   width: 100px;
   height: 100px;
+  border-radius: 50%;
 }
-
-.bhutuu{
-  padding-top: 20px;
-  padding-left: 50px;
-  width: 100px;
-  height: 100px;
-}
-
-.bomb{
+.bomb {
+  justify-content: center;
+  align-items: center;
   position: relative;
-  font-size: 55px;
-  letter-spacing: 15px;
+  font-size: 80px;
+  letter-spacing: 10px;
   color: #0e3742;
   width: 100%;
-  padding: 200px;
+  padding: 30px 0px 0px 190px;
   -webkit-box-reflect: below 1px linear-gradient(transparent,#0008);
   line-height: 0.70em;
   outline: none;
@@ -61,13 +62,45 @@ body{
   18%,20.1%,30%,50%,60.1%,65%,80.1%,90%,92.1%,100%
   {
     color: #efff;
-    text-shadow: 0 0 10px #03bcfa;
-    0 0 20px #03bcfa,
-    0 0 40px #03bcfa,
-    0 0 80px #03bcfa,
-    0 0 160px #03bcfa;
+    text-shadow: 0 0 10px #03bcfa 0 0 20px #03bcfa, 0 0 40px #03bcfa, 0 0 80px #03bcfa, 0 0 160px #03bcfa;
   }
 }
-
-
-
+.inp
+{
+  display: flex;
+  flex-direction: column;
+  padding-top: 150px;
+  justify-content: center;
+  align-items: center;
+}
+.usr
+{
+  margin: 20px;
+  padding: 10px;
+  border-width: 10px;
+  border-radius: 30px;
+  background: linear-gradient(yellow, orange);
+  border-color: blue;
+  font-size: 40px;
+}
+.login
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+.btn
+{
+  padding: 5px;
+  font-size: 50px;
+  color: lightpink;
+  border-width: 7px;
+  border-color: white;
+  background-color: black;
+  border-radius: 20px;
+}
+.btn:hover
+{
+  background-color: darkred;
+}
