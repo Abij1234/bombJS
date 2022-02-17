@@ -91,4 +91,37 @@ body{
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18  );
 }
-
+.butn
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 500px;
+  transform: translate(0%,-10%);
+}
+.btn
+{
+  background-color: black;
+  position: relative;
+  text-align: center;
+  width: 250px;
+  padding: 20px 50px 20px 50px;
+  font-size: 50px;
+  color: #03e9f4;
+  font-family: poppins;
+  font-weight: 600;
+  border: 5px solid #03e9f4;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: 1.5s;
+}
+.btn:hover
+{
+  box-shadow:
+  0 5px 30px 0 #03e9f4 inset,0 5px 30px 0 #03e9f4,
+  0 5px 30px 0 #03e9f4 inset,0 5px 30px 0 #03e9f4;
+  text-shadow:
+  0 0 50px #03e9f4, 0 0 50px #03e9f4;
+}
