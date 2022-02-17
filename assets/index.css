@@ -1,0 +1,94 @@
+body{
+  background-image: url("image/backmoon2.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.main{
+  width: 900px;
+  height: 1200px;
+  margin-left: 35px;
+  margin-top: 250px;
+  background:
+  rgba( 255, 255, 255, 0.35 );
+  box-shadow:
+  0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter:
+  blur( 6px );
+  border-radius:
+  10px;
+  border:
+  1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.main .img{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.main .img .imgs{
+  padding: 8px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.bomb{
+  position: relative;
+  font-size: 7em;
+  letter-spacing: 15px;
+  padding-top: 20px;
+  padding-left: 200px;
+  color: #0e3742;
+  -webkit-box-reflect: below 1px linear-gradient(transpare      nt,#0008);
+  line-height: 0.70em;
+  outline: none;
+  animation: animate 5s linear infinite;
+}
+
+@keyframes animate
+{
+  0%,18%,20%,50.1%,60%,65.1%,80%,90.1%,92%
+  {
+    color: #0e3742;
+    box-shadow: none;
+  }
+  18%,20.1%,30%,50%,60.1%,65%,80.1%,90%,92.1%,100%
+  {
+    color: #efff;
+    text-shadow: 0 0 10px #03bcfa 0 0 20px #03bcfa, 0 0 40
+      px #03bcfa, 0 0 80px #03bcfa, 0 0 160px #03bcfa;
+
+  }
+}
+
+.main .input .usrco{
+  margin-top: 100px;
+  margin-left: 100px;
+  width: 190px;
+  font-size: 60px;
+  border: 1px solid white;
+  background: rgba( 255, 255, 255, 0.15 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 6px );
+  -webkit-backdrop-filter: blur( 6px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.main .input .usrnu{
+  margin-left: 50px;
+  width: 450px;
+  font-size: 60px;
+  border: 1px solid white;
+  background: rgba( 255, 255, 255, 0.15  );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37  );
+  backdrop-filter: blur( 6px  );
+  -webkit-backdrop-filter: blur( 6px  );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18  );
+}
+
