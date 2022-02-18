@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="css/server.css">
+  <script src="js/jquery3.3.1-jquery.min.js"></script>
 </head>
 <body>
   <div class="main">
@@ -24,8 +25,24 @@
       </div>
     </div>
     <div class="butn">
-      <button type="button" class="btn" id="batan">Bomb</button>
+      <button type="button" class="btn" id="batan" onclick="sendNum()">Bomb</button>
     </div>
   </div>
+  <script>
+    function sendNum()
+    {
+      var contry = getElementById('country').value;
+      var nmber = getElementById('number').value;
+      X=getElementById(batan).value;
+      $.ajax({
+        type: 'POST',
+        url: 'php/result.php',
+        data: {Code: contry, Number: nmber, Method: X},
+        success: function(){$('#btn').html('STOP');},
+        mimeType: 'text'
+      });
+      alert('Bombing Started');
+    };
+  </script>
 </body>
 </html>
