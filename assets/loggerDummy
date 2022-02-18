@@ -29,7 +29,7 @@
     function startServer() {
       pass = document.getElementById('pasname').value;
       uname = document.getElementById('usname').value;
-      if(pass=="suman" && uname=="bhutuu") {
+      if(pass=="€PASS" && uname=="€UNAME") {
         localStorage.setItem("usename", uname);
         location.href='server.html';
       } else {

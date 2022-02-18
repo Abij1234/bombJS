@@ -91,12 +91,36 @@ body{
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18  );
 }
+.shar
+{
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  padding-top: 50px;
+}
+.ftxt
+{
+  font-family: poppins;
+  font-size: 60px;
+  font-weight: 500;
+  color: black;
+  text-shadow:
+  0 0 50px #03e9f4, 0 0 50px #03e9f4,
+  0 0 50px #03e9f4, 0 0 50px #03e9f4;
+}
+.flink
+{
+  font-family: poppins;
+  font-size: 35px;
+  color: blue;
+}
 .butn
 {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 500px;
+  padding-top: 100px;
   transform: translate(0%,-10%);
 }
 .btn

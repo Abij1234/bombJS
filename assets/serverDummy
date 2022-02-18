@@ -18,6 +18,10 @@
         <input id="country" class="usrco" placeholder="+91">
         <input id="number" class="usrnu" type="number" placeholder="number">
       </form>
+      <div class="shar">
+        <p class="ftxt">Forward your session:</p>
+        <p class="flink">€FLINK</p>
+      </div>
     </div>
     <div class="butn">
       <button type="button" class="btn" id="batan">Bomb</button>
