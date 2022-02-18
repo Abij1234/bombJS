@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/logger.css">
+</head>
+<body>
+  <div class="maindiv">
+    <div class="img">
+      <img class="imgs" src="img/IMG_20201219_122729.JPG" alt="Avatar">
+      <img class="imgs" src="img/bhutuu.jpg" alt="Avatar">
+    </div>
+    <div class="bomb">
+      <i>bombJS</i>
+    </div>
+    <div class="inp">
+      <form action="">
+        <input type="username" class="usr" id="usname" placeholder="username">
+        <input type="password" class="usr" id="pasname" placeholder="password">
+      </form>
+    </div>
+    <div class="login">
+      <button type="button" class="btn" onclick="startServer()">Log In</button>
+    </div>
+  </div>
+  <script>
+    function startServer() {
+      pass = document.getElementById('pasname').value;
+      uname = document.getElementById('usname').value;
+      if(pass=="suman" && uname=="bhutuu") {
+        localStorage.setItem("usename", uname);
+        location.href='server.html';
+      } else {
+        alert("You have entered a wrong password!");
+        location.reload(true)
+      }
+    }
+</script>
+</body>
+</html>
