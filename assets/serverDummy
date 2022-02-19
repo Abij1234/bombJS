@@ -25,7 +25,8 @@
       </div>
     </div>
     <div class="butn">
-      <button type="button" class="btn" id="batan" onclick="sendNum()">Bomb</button>
+      <button type="button" class="btn" onclick="sendNum()">Bomb</button>
+      <button type="button" class="btn" onclick="stopNum()">Stop</button>
     </div>
   </div>
   <script>
@@ -33,16 +34,27 @@
     {
       var contry = document.getElementById('country').value;
       var nmber = document.getElementById('number').value;
-      //var x = document.getElementById(batan).value;
+      var meth = 'bomb'
       $.ajax({
         type: 'POST',
         url: 'php/result.php',
-        data: {Code: contry, Number: nmber},
-        success: function(){$('#btn').html('STOP');},
+        data: {Code: contry, Number: nmber, Method: meth},
+        success: function(){alert('Bombing Started!');},
         mimeType: 'text'
       });
-      alert('Bombing Started');
     };
+    function stopNum() {
+      var contry = '+91'
+      var nmber = '987654321034534364'
+      var meth = 'stop'
+      $.ajax({
+        type: 'POST',
+        url: 'php/result.php',
+        data: {Code: contry, Number: nmber, Method: meth},
+        success: function() {alert('Bombing Stopped!');},
+        mimeType: 'text'
+      });
+    }
   </script>
 </body>
 </html>

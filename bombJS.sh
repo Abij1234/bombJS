@@ -51,6 +51,13 @@ if [ "$?" != '0' ]; then
     printf "${S2}[${S1}!${S2}] ${S4}Check your internet connection!!${R0}\n"
     exit 1
 fi
+#<<<=========Sigint signal===>>>
+signal_on_SIGINT() {
+    rm -rf $CWD/assets/index.html >/dev/null 2>&1
+    rm -rf $CWD/assets/server.html>/dev/null 2>&1
+    printf "${S2}[${S1}!${S2}] ${S4}bomber.js is interrupted!!${R0}\n"
+    exit 1
+}
 #<<<=========Requrements=====>>>
 pkgs=(git wget curl php jq)
 for p in "${pkgs[@]}"; do
@@ -74,7 +81,7 @@ if [ -f $CWD/maindb.json ]; then
 else
     printf "\nLets authorise you to use ${S1}:: ${S4}trace${R0}\n\n"
     printf "${S3}Enter a username: ${S4}"; read uname
-    printf "${S3}Enter a password: ${S4}"; read password
+    printf "${S3}Enter a password: ${S4}"; read password ; printf "${R0}"
 cat <<- EQF >$CWD/maindb.json
 {
   "Login": [
