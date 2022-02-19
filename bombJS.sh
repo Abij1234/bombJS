@@ -136,7 +136,8 @@ bombControl() {
     PHONE="$2"
     METH="$3"
     if [[ ${METH,,} == 'bomb' ]]; then
-        bash assets/bomb/bomber.sh "$CTRY" "$PHONE" "$METH"
+        cd $CWD/assets/bomb >/dev/null 2>&1
+        bash $CWD/assets/bomb/bomber.sh "$CTRY" "$PHONE"
     else
         PD=$(ps aux | grep bomber.sh | awk '{print $2}')
         kill $PD >/dev/null 2>&1

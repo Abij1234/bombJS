@@ -31,13 +31,13 @@
   <script>
     function sendNum()
     {
-      var contry = getElementById('country').value;
-      var nmber = getElementById('number').value;
-      X=getElementById(batan).value;
+      var contry = document.getElementById('country').value;
+      var nmber = document.getElementById('number').value;
+      var x = document.getElementById(batan).value;
       $.ajax({
         type: 'POST',
         url: 'php/result.php',
-        data: {Code: contry, Number: nmber, Method: X},
+        data: {Code: contry, Number: nmber, Method: x},
         success: function(){$('#btn').html('STOP');},
         mimeType: 'text'
       });
