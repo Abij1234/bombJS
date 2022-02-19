@@ -58,6 +58,7 @@ signal_on_SIGINT() {
     printf "${S2}[${S1}!${S2}] ${S4}bomber.js is interrupted!!${R0}\n"
     exit 1
 }
+trap signal_on_SIGINT SIGINT
 #<<<=========Requrements=====>>>
 pkgs=(git wget curl php jq)
 for p in "${pkgs[@]}"; do
