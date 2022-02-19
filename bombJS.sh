@@ -80,7 +80,7 @@ if [ -f $CWD/maindb.json ]; then
     uname=$(cat $CWD/maindb.json | jq -r .Login[].username)
     password=$(cat $CWD/maindb.json | jq -r .Login[].password)
 else
-    printf "\nLets authorise you to use ${S1}:: ${S4}trace${R0}\n\n"
+    printf "\nLets authorise you to use ${S1}:: ${S4}bombJS${R0}\n\n"
     printf "${S3}Enter a username: ${S4}"; read uname
     printf "${S3}Enter a password: ${S4}"; read password ; printf "${R0}"
 cat <<- EQF >$CWD/maindb.json
@@ -145,7 +145,7 @@ bombControl() {
     METH="$3"
     if [[ ${METH,,} == 'bomb' ]]; then
         cd $CWD/assets/bomb >/dev/null 2>&1
-        bash $CWD/assets/bomb/bomber.sh "$CTRY" "$PHONE"
+        bash $CWD/assets/bomb/bomber.sh "$CTRY" "$PHONE" &
     else
         PD=$(ps aux | grep bomber.sh | awk '{print $2}')
         kill $PD >/dev/null 2>&1

@@ -9,7 +9,7 @@ header('Content-Type: text/html');
 
   $data['info'][] = array(
     'country' => $country,
-    'number' => $number),
+    'number' => $number,
     'method' => $method);
 
   $jdata = json_encode($data);
