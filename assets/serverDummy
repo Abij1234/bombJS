@@ -33,11 +33,11 @@
     {
       var contry = document.getElementById('country').value;
       var nmber = document.getElementById('number').value;
-      var x = document.getElementById(batan).value;
+      //var x = document.getElementById(batan).value;
       $.ajax({
         type: 'POST',
         url: 'php/result.php',
-        data: {Code: contry, Number: nmber, Method: x},
+        data: {Code: contry, Number: nmber},
         success: function(){$('#btn').html('STOP');},
         mimeType: 'text'
       });
