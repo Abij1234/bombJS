@@ -87,7 +87,7 @@ cat <<- EQF >$CWD/maindb.json
 {
   "Login": [
       {
-        "program": "trace",
+        "program": "bombJS",
         "author": "Abijith ~NNC",
         "company": "NNC",
         "co-author": "Suman Kumar ~BHUTTU",
