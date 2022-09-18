@@ -77,9 +77,10 @@ for p in "${pkgs[@]}"; do
 done
 #<<<=========killSession========>>>
 killSession() {
-    pidCloud=$(ps aux | grep "cloudflared" | awk '{print $2}')
-    pidPhp=$(ps aux | grep "php" | awk '{print $2}')
-    kill -9 $pidCloud $pidPhp >/dev/null 2>&1
+    pkill curl
+    pkill proot
+    pkill cloudflared
+    pkill php
 }
 #<<<=========Program=========>>>
 #collecting your name
@@ -174,9 +175,10 @@ bombControl() {
         cd $CWD/assets/bomb >/dev/null 2>&1
         bash $CWD/assets/bomb/bomber.sh "$CTRY" "$PHONE" &
     else
+        rm -rf $CWD/assets/index.html >/dev/null 2>&1
+        rm -rf $CWD/assets/server.html >/dev/null 2>&1
         killSession
-        PD=$(ps aux | grep bomber.sh | awk '{print $2}')
-        kill -9 $PD >/dev/null 2>&1
+        pkill bash
     fi
 }
 while true; do
