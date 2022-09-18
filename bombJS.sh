@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#/usr/bin/env bash
 #cd assets
 #cat logger.html>index.html
 #php -S 127.0.0.1:8082>/dev/null 2>&1 &
@@ -7,6 +7,7 @@
 #<<<========Inbuilt Varialbles and values========>>>
 CWD=$(pwd)
 OS=$(uname -o)
+arg1="$1"
 if [[ ${OS,,} == *'android'* ]]; then
     if [[ ${CWD} == *'com.termux'* ]]; then
         export PREFIX='/data/data/com.termux/files/usr'
@@ -76,10 +77,7 @@ for p in "${pkgs[@]}"; do
 done
 #<<<=========Program=========>>>
 #collecting your name
-if [ -f $CWD/maindb.json ]; then
-    uname=$(cat $CWD/maindb.json | jq -r .Login[].username)
-    password=$(cat $CWD/maindb.json | jq -r .Login[].password)
-else
+setPass() {
     printf "\nLets authorise you to use ${S1}:: ${S4}bombJS${R0}\n\n"
     printf "${S3}Enter a username: ${S4}"; read uname
     printf "${S3}Enter a password: ${S4}"; read password ; printf "${R0}"
@@ -98,6 +96,29 @@ cat <<- EQF >$CWD/maindb.json
   ]
 }
 EQF
+}
+if [[ $arg1 == '-r' || $arg1 == '--reset' ]]; then
+    if [ -f $CWD/maindb.json ]; then
+        rm -rf $CWD/maindb.json
+        setPass
+        printf "\nPassword is changed successfully...!\n"
+        exit 0
+    fi
+elif [[ $arg1 == '-h' || $arg1 == '--help' ]]; then
+    printf "
+    \033[1A\r________
+    \r  HELP
+    \r--------
+    \r    -h --help     For this help menu.
+    \r    -r --reset    To reset password.
+    \033[1A\n\r";
+    exit 0
+fi
+if [ -f $CWD/maindb.json ]; then
+    uname=$(cat $CWD/maindb.json | jq -r .Login[].username)
+    password=$(cat $CWD/maindb.json | jq -r .Login[].password)
+else
+    setPass
 fi
 #<<<::::Create logger::::>>>#
 rm -rf $CWD/assets/index.html >/dev/null 2>&1
